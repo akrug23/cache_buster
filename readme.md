@@ -1,22 +1,18 @@
-h1. Cache Buster
+#Cache Buster
 
 An ExpressionEngine plugin that adds a simple cache buster to your flat file references
 
 
-h2. Compatibility
+##Compatibility
 
-* ExpressionEngine 1.6.x
-* ExpressionEngine 2.x
+* ExpressionEngine 3.x
 
 h2. Installation
 
-Note: The same file is used for both ExpressionEngine 1 and ExpressionEngine 2.
-
-* *ExpressionEngine 1.6.x:* Upload the <code>/system/expressionengine/third_party/cache_buster/pi.cache_buster.php</code> file to the <code>system/plugins</code> directory.
-* *ExpressionEngine 2.x:* Upload the <code>/system/expressionengine/third_party/cache_buster</code> directory to the <code>system/expressionengine/third_party</code> directory.
+* *ExpressionEngine 3.x:* Upload the <code>/system/user/addons/cache_buster</code> directory to the <code>system/user/addons</code> directory.
 
 
-h2. Purpose
+##Purpose
 
 Using ExpressionEngine's CSS template provides a nice cache buster string of the most recent time
 the template was saved to the database. This is quite handy but still requires EE to process the template.
@@ -26,36 +22,52 @@ string like ExpressionEngine's. This allows you to server flat files from your s
 ExpressionEngine's template parser run through the code first. It is very simple to use.
 
 
-h2. Usage
+##Usage
 
 There are 3 parameters. One is required and the other two are optional.
 
-<pre><code>{exp:cache_buster file="/css/style.css"}</code></pre>
+```
+{exp:cache_buster file="/css/style.css"}
+```
 
 This will return
 
-<pre><code>/css/style.css?v=1266264101</code></pre>
+```
+/css/style.css?v=1266264101
+```
 
 Where "1266264101" is the UNIX timestamp of the last time /css/style.css was saved to the server.
 
 You can change the separator between the file and the timestamp with the use of separator="" in the tag.
 
-<pre><code>{exp:cache_buster file="/css/style.css" separator="?"}</code></pre>
+```
+{exp:cache_buster file="/css/style.css" separator="?"}
+```
 
 This will return
 
-<pre><code>/css/style.css?1266264101</code></pre>
+```
+/css/style.css?1266264101
+```
 
 *Server Root*
 
-If your file isn't being read by the plugin then the server root might not be the right path. The plugin assumes that your file will reside on your server's DOCUMENT_ROOT variable. If this is not accurate you can manually define the root with the root_path parameter. *Do not include a trailing slash.*
+If your file isn't being read by the plugin then the server root might not be the right path. The plugin assumes that your file will reside on your server's DOCUMENT_ROOT variable. If this is not accurate you can manually define the root with the root_path parameter. 
 
-<pre><code>{exp:cache_buster file="/css/style.css" root_path="/home/mysite/subdirectory/templates"}</code></pre>
+```
+{exp:cache_buster file="/css/style.css" root_path="/home/mysite/subdirectory/templates"}
+```
 
 
-h2. Change Log
+##Change Log
 
-+*Feb 17th, 2011: 1.1.1*+
+**_Apr 28th, 2017: 2.0.0_**
+
+* Feature: EE3.x compatibility added
+* Feature: Cleaned up file path with realpath()
+* Deprecated: EE2 and below support
+
+*Feb 17th, 2011: 1.1.1*
 
 * Bug: Fixed bug where root_path wasn't set correctly
 

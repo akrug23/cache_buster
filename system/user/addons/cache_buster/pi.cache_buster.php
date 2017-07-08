@@ -12,6 +12,9 @@ class Cache_buster
       if (ee()->TMPL->fetch_param('file') != "") 
       {
          $file = ee()->TMPL->fetch_param('file');
+
+         //Clean parameters
+         $file = ee('Security/XSS')->clean($file);
       } else {
          $file = FALSE;
       }
@@ -19,6 +22,9 @@ class Cache_buster
       if (ee()->TMPL->fetch_param('separator') != "") 
       {
          $separator = ee()->TMPL->fetch_param('separator');
+
+         //Clean parameters
+         $separator = ee('Security/XSS')->clean($separator);
       } else {
          $separator = '?v=';
       }
@@ -26,12 +32,15 @@ class Cache_buster
       if (ee()->TMPL->fetch_param('root_path') != "") 
       {
          $root_path = ee()->TMPL->fetch_param('root_path');
+
+         //Clean parameters
+         $root_path = ee('Security/XSS')->clean($root_path);
       } else {
          $root_path = $_SERVER['DOCUMENT_ROOT'];
       }
 
       //Get real path
-      $path = realpath($root_path . ee('Security/XSS')->clean($file));
+      $path = realpath($root_path . '/' . $file);
 
       //Get time of file
       $time = filemtime($path);

@@ -7,7 +7,7 @@
  * system/user/addons/ folder in your ExpressionEngine installation.
  *
  * @package CacheBuster
- * @version 2.0.0
+ * @version 3.0.0
  * @author Aaron Krug
  * @license http://creativecommons.org/licenses/by-nd/3.0/ Creative Commons Attribution-No Derivative Works 3.0 Unported
  *
@@ -25,7 +25,7 @@ return array(
       'author_url'  => '',
       'name'        => 'Cache Buster',
       'description' => 'Adds a simple cache buster to your flat file references',
-      'version'     => '2.0.0',
+      'version'     => '3.0.0',
       'docs_url'	=> 'https://github.com/akrug23/cache_buster',
       'namespace'   => 'TheBaldman\CacheBuster'
 );
